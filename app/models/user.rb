@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 class User < ActiveRecord::Base
   PERMISSIONS = {
-    'Article': ['create', 'update', 'index'],
+    'Foobar': ['create', 'update', 'index'],
     "User": ["index"]
   }.freeze
   SUPER_ADMIN_PERMISSIONS = {
-    'Article': ['create', 'update', 'index', 'destroy'],
+    'Foobar': ['create', 'update', 'index', 'destroy'],
     "User": ["index", 'create', 'update', 'destroy']
   }.freeze
 
@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :validatable
   include DeviseTokenAuth::Concerns::User
 
-  has_many :articles, foreign_key: 'publisher_id'
+  has_many :foobar
   after_initialize :init
 
   def init
